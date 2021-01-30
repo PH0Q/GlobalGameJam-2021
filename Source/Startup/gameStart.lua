@@ -4,8 +4,8 @@ function gameStart()
     love.window.setFullscreen(false)
 
     -- import camera lib
-    Camera = require "Source/packages/camera"
-    
+    Camera = require("Source/packages/camera")
+
     -- import animation lib
     anim8 = require("Source/packages/anim8")
 

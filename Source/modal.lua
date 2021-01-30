@@ -20,6 +20,7 @@ function Modal:new(p_location, p_width, p_height, p_padding)
         padding = {top=p_padding.top, left=p_padding.left, right=p_padding.right, bottom=p_padding.bottom},
         loadingAnim = nil,
         leavingAnim = nil,
+        textFont = nil,
         background = nil,
         canvas = love.graphics.newCanvas(p_width, p_height, normal, 0)
     }
@@ -27,30 +28,31 @@ function Modal:new(p_location, p_width, p_height, p_padding)
     return this
 end
 
-function Modal:setSolidBackground(red, green , blue, alpha)
+function Modal:setSolidBackground(p_red, p_green , p_blue, p_alpha)
+    self.background = nil
     love.graphics.setCanvas(self.canvas)
         love.graphics.clear()
         love.graphics.setColor(0, 1, 0, 1)
         love.graphics.rectangle("fill", 0, 0, self.width, self.height)
+        self.background = nil
     love.graphics.setCanvas()
 end
 
-function Modal:setImageBackground(image)
-    --[[love.graphics.setCanvas(self.canvas)
-        love.graphics.clear()
-        love.graphics.setColor(1, 1, 1, 1)
-        love.graphics.drawq()
-    love.graphics.setCanvas()]]--
+function Modal:setImageBackground(p_background)
+    self.background = p_background
 end
 
 function Modal:displayText(text)
     love.graphics.setCanvas(self.canvas)
         love.graphics.setColor(0, 0, 0, 1)
-        love.graphics.print(text, self.padding.left, self.padding.top, nil, 1, 1, 0, 0)
+        love.graphics.printf(text, self.padding.left, self.padding.top, self.width - self.padding.left - self.padding.right, justify)
     love.graphics.setCanvas()
 end
 
 function Modal:drawModal()
     love.graphics.setColor(1, 1, 1, 1)
+    if self.background ~= nil then
+        love.graphics.draw(self.background, self.x, self.y, nil, 1, 1, 0)
+    end
     love.graphics.draw(self.canvas, self.x, self.y, nil, 1, 1, 0)
 end

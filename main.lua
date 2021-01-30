@@ -6,25 +6,22 @@ end
 function love.update(dt)
     player:update(dt)
     world:update(dt)
-    camera:update(dt)
+    cam:update(dt)
     if player.isAlive == false then
         death_modal = Modal:new("centered", 200, 150, {top=10, bottom=10, left=10, right=10})
-        death_modal:setSolidBackground(0, 1, 0, 1)
-        death_modal:displayText("You died")
+        death_modal:setImageBackground(love.graphics.newImage("Source/Assets/death_modal_background.png"))
+        death_modal:displayText("You are dead")
     end
 end
 
 function love.draw()
-    cam:attach()
-        -- Draw the background image
+    camera:attach()
         love.graphics.setColor(1, 1, 1, 1)
-        -- set background and set the origine (here, width/2 and height/2)
         love.graphics.draw(sprites.background, -2169, -1800)
-
         player:draw()
         love.graphics.setLineWidth(5)
-        --world:draw()
-    cam:detach()
+    camera:detach()
+
     if player.isAlive == false then
         death_modal:drawModal()
     end
