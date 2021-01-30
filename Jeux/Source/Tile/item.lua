@@ -20,6 +20,6 @@ function item:new(p_x, p_y, p_sprite, p_width, p_height)
     return this
 end
 
-function item:draw()
-    love.graphics.draw( self.sprite, self.x, self.y)
+function physical_decoration:draw()
+    love.graphics.draw( self.sprite, self.collider:getX(), self.collider:getY())
 end
