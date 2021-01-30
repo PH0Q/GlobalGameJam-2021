@@ -30,10 +30,12 @@ end
 
 function love.keypressed(key)
 
-    -- Resets the player's position to (0, 0)
-    if key == "r" then
-        player.collider:setPosition(0, 0)
-        player.collider:setLinearVelocity(0, 0)
+    if key == "m" then
+        love.window.showMessageBox("coucouc", "test", "error", true)
+    end
+
+    if key == "k" then
+        player:die()
     end
 
 end
