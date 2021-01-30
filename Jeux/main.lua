@@ -1,6 +1,7 @@
 function love.load()
     require("source/startup/gameStart")
     gameStart()
+
     mapCreation()
 
     pierre = physical_decoration:new(-35, 10, sprites.pierre, 50, 50)
@@ -24,8 +25,6 @@ function love.draw()
         love.graphics.draw(sprites.background, -2500/2, -2500/2)
 
         pierre:draw()
-        pierre_1:draw()
-
         player:draw()
         love.graphics.setLineWidth(5)
     camera:detach()
