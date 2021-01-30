@@ -2,8 +2,6 @@ function love.load()
     require("source/startup/gameStart")
     gameStart()
 
-    mapCreation()
-
     pierre = physical_decoration:new(-35, 10, sprites.pierre, 50, 50)
     pierre_1 = physical_decoration:new(100, 60, sprites.pierre, 50, 50)
 end
