@@ -5,7 +5,7 @@ function gameStart()
 
     -- import camera lib
     Camera = require "Source/packages/camera"
-    
+
     -- import animation lib
     anim8 = require("Source/packages/anim8")
 
@@ -22,6 +22,7 @@ function gameStart()
     require("Source/Startup/resources")
     require("Source/player")
     require("Source/cam")
+    require("Source/Tile/physical_decoration")
 
     require("Source/global")
 
