@@ -9,18 +9,16 @@ function love.update(dt)
 
     player:update(dt)
     world:update(dt)
-
-    local dx,dy = player.collider:getX() - cam.x, player.collider:getY() - cam.y
-    cam:move(dx/2, dy/2)
-
+    cam:update()
 
 end
 
 function love.draw()
-    cam:attach()
+    camera:attach()
 
         -- Draw the background image
         love.graphics.setColor(1, 1, 1, 1)
+        -- set background and set the origine (here, width/2 and height/2)
         love.graphics.draw(sprites.background, -2169, -1800)
 
         player:draw()
@@ -28,8 +26,9 @@ function love.draw()
         love.graphics.setLineWidth(5)
         --world:draw()
 
-    cam:detach()
 
+    camera:detach()
+    love.graphics.print(camera.scale, 0, 0)
 
 end
 

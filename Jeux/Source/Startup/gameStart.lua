@@ -5,8 +5,7 @@ function gameStart()
 
     -- import camera lib
     Camera = require "Source/packages/camera"
-    cam = Camera(0, 0)
-
+    
     -- import animation lib
     anim8 = require("Source/packages/anim8")
 
@@ -22,6 +21,7 @@ function gameStart()
     -- Load assets and resources
     require("Source/Startup/resources")
     require("Source/player")
+    require("Source/cam")
 
     require("Source/global")
 
