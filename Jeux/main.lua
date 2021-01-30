@@ -2,9 +2,13 @@ function love.load()
 
     require("source/startup/gameStart")
     gameStart()
-
+                                      --x, y
     pierre = physical_decoration:new(-35, 10, sprites.pierre, 50, 50)
-    pierre_1 = physical_decoration:new(100, 60, sprites.pierre, 50, 50)
+    --pierre_1 = physical_decoration:new(100, 60, sprites.pierre, 50, 50
+
+
+
+
 
 end
 
@@ -25,8 +29,6 @@ function love.draw()
         love.graphics.draw(sprites.background, -2500/2, -2500/2)
 
         pierre:draw()
-        pierre_1:draw()
-
         player:draw()
 
 
