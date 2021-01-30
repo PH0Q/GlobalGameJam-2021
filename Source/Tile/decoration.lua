@@ -1,7 +1,7 @@
-physical_decoration = {}
-physical_decoration.__index = physical_decoration
+decoration = {}
+decoration.__index = decoration
 
-function physical_decoration:new(p_x, p_y, p_sprite, p_width, p_height)
+function decoration:new(p_x, p_y, p_sprite, p_width, p_height)
     local this = {
       x = p_x,
       y = p_y,
@@ -12,7 +12,7 @@ function physical_decoration:new(p_x, p_y, p_sprite, p_width, p_height)
 
     self.collider = world:newRectangleCollider(this.x, this.y, this.width, this.height)
     self.collider:setType('static')
-    self.collider:setCollisionClass("physical_decoration")
+    self.collider:setCollisionClass("decoration")
 
     self.sprite = p_sprite
 

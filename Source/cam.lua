@@ -2,11 +2,11 @@
 -- zoom default = 1
 cam = {}
 
-camera = Camera(0, 0, 1)
+camera = Camera(0, 0, 0.5)
 
 function cam:update()
-    cam:zoom()
-    
+    --cam:zoom()
+
     --set the postion of the camera du to player position
     local dx,dy = player.collider:getX() - camera.x, player.collider:getY() - camera.y
     camera:move(dx/2, dy/2)
