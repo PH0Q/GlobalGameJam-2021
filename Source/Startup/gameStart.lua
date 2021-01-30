@@ -25,4 +25,7 @@ function gameStart()
 
     require("Source/global")
 
+    -- Load modal boxes
+    require("Source/modal")
+
 end
