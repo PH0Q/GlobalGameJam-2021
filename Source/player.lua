@@ -6,7 +6,7 @@ player.isMoving = false
 player.isAlive = true
 
 -- Physics properties
-player.collider = world:newCircleCollider(0, 0, 40)
+player.collider = world:newCircleCollider(25, 0, 20)
 player.collider:setCollisionClass("Player")
 
 player.grids = {}

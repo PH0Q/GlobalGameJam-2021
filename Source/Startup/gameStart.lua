@@ -22,6 +22,7 @@ function gameStart()
     require("Source/Startup/resources")
     require("Source/player")
     require("Source/cam")
+    require("Source/Tile/physical_decoration")
 
     require("Source/global")
 
