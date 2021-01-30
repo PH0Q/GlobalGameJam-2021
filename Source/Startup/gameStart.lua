@@ -29,4 +29,6 @@ function gameStart()
     -- Load modal boxes
     require("Source/modal")
 
+    require("Source/randomize_terrain")
+
 end
