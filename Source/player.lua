@@ -26,8 +26,6 @@ player.animations.bottom = anim8.newAnimation(player.grids.walk('3-3', 1), 0.300
 -- This value stores the player's current animation
 --player.anim = player.animations.top
 
-
-
 function player:update(dt)
 
     -- Freeze the animation if the player isn't moving

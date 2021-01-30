@@ -1,6 +1,7 @@
 function love.load()
     require("source/startup/gameStart")
     gameStart()
+    mapCreation()
 end
 
 function love.update(dt)

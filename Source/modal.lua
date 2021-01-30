@@ -42,10 +42,14 @@ function Modal:setImageBackground(p_background)
     self.background = p_background
 end
 
-function Modal:displayText(text)
+function Modal:displayText(text, font)
     love.graphics.setCanvas(self.canvas)
         love.graphics.setColor(0, 0, 0, 1)
-        love.graphics.printf(text, self.padding.left, self.padding.top, self.width - self.padding.left - self.padding.right, justify)
+        if font ~= nil then
+            love.graphics.printf(text, font, self.padding.left, self.padding.top, self.width - self.padding.left - self.padding.right, justify, nil, 1, 1, 0, 0, 0, 0)
+        else
+            love.graphics.printf(text, self.padding.left, self.padding.top, self.width - self.padding.left - self.padding.right, justify)
+        end
     love.graphics.setCanvas()
 end
 
