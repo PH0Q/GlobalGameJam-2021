@@ -1,6 +1,6 @@
 -- Returns the x, y position that is in front of Link
 -- "dist" number of pixels away
-function getLinkFrontPosition(dist)
+function frontInteraction(dist)
 
     local px, py = player.collider:getPosition()
 

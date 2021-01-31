@@ -3,6 +3,7 @@ function love.load()
     gameStart()
     decorators, decorators_coordinates = setDecorators()
     --pierre = physical_decoration:new(20, 30, sprites.pierre, 50, 50)
+    score = 0
 end
 
 function love.update(dt)
@@ -41,7 +42,7 @@ function love.draw()
     love.graphics.print(player.collider:getY(), 0, 20)
 
     love.graphics.setColor(0, 0, 0, 1)
-    --love.graphics.print(pierre.collider:getX(), 0, 40)
+    love.graphics.print(score, 0, 40)
     --love.graphics.print(pierre.collider:getY(), 0, 50)
 
     --love.graphics.print(pierre.x, 50, 40)
@@ -56,6 +57,13 @@ end
 function love.keypressed(key)
     if key == "k" then
         player:die()
+    end
+    if key == "space" then
+        local px, py = frontInteraction(60)
+        local colliders = world:queryCircleArea(px, py, 20, {"physical_decoration"})
+        if #colliders > 0 then
+          score = score + #colliders
+        end
     end
 
 end
