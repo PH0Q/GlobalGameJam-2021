@@ -4,7 +4,7 @@ dayNight.timer = Timer.new()
 
 -- state = dawn, afternoon, sunset, night
 dayNight.dawn = {}
-dayNight.dawn.time = 1--150
+dayNight.dawn.time = 150
 dayNight.dawn.color = {}
 dayNight.dawn.color.r = 0.84
 dayNight.dawn.color.g = 1
@@ -13,7 +13,7 @@ dayNight.dawn.max_a = 0.2
 dayNight.dawn.a = 0
 
 dayNight.afternoon = {}
-dayNight.afternoon.time = 1-- 300
+dayNight.afternoon.time = 300
 dayNight.afternoon.color = {}
 dayNight.afternoon.color.r = 0.96
 dayNight.afternoon.color.g = 1
@@ -22,7 +22,7 @@ dayNight.afternoon.max_a = 0.2
 dayNight.afternoon.a = 0
 
 dayNight.sunset = {}
-dayNight.sunset.time =  5--150
+dayNight.sunset.time =  150
 dayNight.sunset.color = {}
 dayNight.sunset.color.r = 1
 dayNight.sunset.color.g = 0.62
@@ -31,7 +31,7 @@ dayNight.sunset.max_a = 0.2
 dayNight.sunset.a = 0
 
 dayNight.night = {}
-dayNight.night.time = 10-- 75
+dayNight.night.time = 75
 dayNight.night.color = {}
 dayNight.night.color.r = 0.03
 dayNight.night.color.g = 0.01
