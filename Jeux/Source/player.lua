@@ -1,5 +1,6 @@
 -- blob's properties
 player = {}
+player.timer = Timer.new()
 player.width = 50 -- width of the animation
 player.height = 47 -- height of the animation
 player.isMoving = false
@@ -89,4 +90,5 @@ function player:die()
     player.collider:setPosition(0, 0)
     player.collider:setLinearVelocity(0, 0)
     player.isAlive = false
+    player.timer:after(5, function() player.isAlive = true end)
 end

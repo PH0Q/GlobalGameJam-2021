@@ -18,11 +18,15 @@ function gameStart()
     require("Source/Startup/collisionClasses")
     createCollisionClasses()
 
+    -- import timer lib
+    Timer = require("Source/packages/timer")
+
     -- Load assets and resources
     require("Source/Startup/resources")
     require("Source/player")
     require("Source/cam")
 
+    -- all element
     require("Source/Tile/physical_decoration")
     require("Source/Tile/decoration")
     require("Source/Tile/item")
@@ -34,5 +38,12 @@ function gameStart()
     require("Source/modal")
 
     require("Source/randomize_terrain")
+
+    -- daynight cycle
+    require("Source/dayNight")
+
+    -- music system
+    --srequire("Source/musicSystem")
+
 
 end
