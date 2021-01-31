@@ -31,5 +31,6 @@ function setDecorators()
     for i=1, n do
         decorators.pierres[i] = physical_decoration:new(decorators_coordinates.pierres[i].x, decorators_coordinates.pierres[i].y, sprites.pierre, 50, 50)
     end
+
     return decorators, decorators_coordinates
 end

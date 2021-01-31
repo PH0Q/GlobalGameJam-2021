@@ -2,6 +2,7 @@ function love.load()
     require("source/startup/gameStart")
     gameStart()
     decorators, decorators_coordinates = setDecorators()
+    --pierre = physical_decoration:new(20, 30, sprites.pierre, 50, 50)
 end
 
 function love.update(dt)
@@ -20,10 +21,15 @@ function love.draw()
         love.graphics.setColor(1, 1, 1, 1)
         love.graphics.draw(sprites.background, -2500/2, -2500/2)
         for i, v in ipairs(decorators.pierres) do
-            v:draw()
+          decorators.pierres[i]:draw()
         end
+        --pierre:draw()
         player:draw()
         love.graphics.setLineWidth(5)
+
+        --debug
+        world:draw()
+        --end debug
     camera:detach()
 
     -- debug
@@ -33,6 +39,13 @@ function love.draw()
     love.graphics.print(camera.scale, 0, 0)
     love.graphics.print(player.collider:getX(), 0, 10)
     love.graphics.print(player.collider:getY(), 0, 20)
+
+    love.graphics.setColor(0, 0, 0, 1)
+    --love.graphics.print(pierre.collider:getX(), 0, 40)
+    --love.graphics.print(pierre.collider:getY(), 0, 50)
+
+    --love.graphics.print(pierre.x, 50, 40)
+    --love.graphics.print(pierre.y, 50, 50)
     -- end debug
 
     if player.isAlive == false then
