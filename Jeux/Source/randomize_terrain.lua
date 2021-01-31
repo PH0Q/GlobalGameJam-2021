@@ -7,8 +7,10 @@ function randomizeSprites(n, map, sprite, world)
 
         local local_collider = world:queryRectangleArea(new_x, new_y, sprite.width, sprite.height)
         if #local_collider == 0 then
-            decorations[i] = physical_decoration:new(new_x, new_y, sprite.img, sprite.width, sprite.height)
-            i = i + 1
+            if isValid(new_x, new_y, "earth") then
+                decorations[i] = physical_decoration:new(new_x, new_y, sprite.img, sprite.width, sprite.height)
+                i = i + 1
+            end
         else
             --n = n - 1
         end
@@ -37,5 +39,27 @@ function randomizedGroupedSprites(n, m, offset, map, sprite, world)
 end
 
 function setDecorators(map, world)
-    return randomizedGroupedSprites(30, 10, 200, map, {img = sprites.pierre, width = 50, height = 50}, world)
+    decorators = {}
+    decorators.pierres = randomizedGroupedSprites(10, 10, 200, map, {img = sprites.pierre, width = 50, height = 50}, world)
+    return decorators
+end
+
+function isValid(x, y, map)
+    if map == "earth" then
+        local offsetX = 1250
+        local offsetY = 1250
+        if(x < 560 - offsetX) then
+            return false
+        end
+        if(x > 3420 - offsetX) then
+            return false
+        end
+        if(y < 300 - offsetY) then
+            return false
+        end
+        if(y > 2450 - offsetY) then
+            return false
+        end
+        return true
+    end
 end
