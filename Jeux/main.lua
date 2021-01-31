@@ -2,14 +2,20 @@ function love.load()
     require("source/startup/gameStart")
     gameStart()
     decorators, decorators_coordinates = setDecorators()
-    --pierre = physical_decoration:new(20, 30, sprites.pierre, 50, 50)
-    score = 0
+
+    score = 0 --debug
+
+    dayNight:start()
+
 end
 
 function love.update(dt)
     player:update(dt)
     world:update(dt)
     cam:update(dt)
+
+    dayNight.timer:update(dt)
+
     if player.isAlive == false then
         death_modal = Modal:new("centered", 200, 150, {top=10, bottom=10, left=10, right=10})
         death_modal:setImageBackground(love.graphics.newImage("Source/Assets/death_modal_background.png"))
@@ -19,6 +25,7 @@ end
 
 function love.draw()
     camera:attach()
+
         love.graphics.setColor(1, 1, 1, 1)
         love.graphics.draw(sprites.background, -2500/2, -2500/2)
         for i, v in ipairs(decorators.pierres) do
@@ -32,6 +39,14 @@ function love.draw()
         world:draw()
         --end debug
     camera:detach()
+
+    --draw front filter
+    dayNight:draw()
+
+    --draw UI
+
+
+
 
     -- debug
     love.graphics.setColor(0, 0, 0, 1)
