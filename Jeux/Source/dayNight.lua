@@ -44,7 +44,6 @@ function toDawn()
   music.afternoon:stop()
   music.sunset:stop()
   music.night:stop()
-  dayNight.color = dayNight.dawn.color
 
   dayNight.timer:after(dayNight.dawn.time,function() dayNight:switch() end)
 end
@@ -55,8 +54,6 @@ function toAfternoon()
   music.sunset:stop()
   music.night:stop()
 
-  dayNight.color = dayNight.afternoon.color
-
   dayNight.timer:after(dayNight.afternoon.time,function() dayNight:switch()end)
 end
 
@@ -66,8 +63,6 @@ function toSunset()
   music.sunset:play()
   music.night:stop()
 
-  dayNight.color = dayNight.sunset.color
-
   dayNight.timer:after(dayNight.sunset.time,function() dayNight:switch()end)
 end
 
@@ -76,8 +71,6 @@ function toNight()
   music.afternoon:stop()
   music.sunset:stop()
   music.night:play()
-
-  dayNight.color = dayNight.night.color
 
   dayNight.timer:after(dayNight.night.time,function() dayNight:switch()end)
 end
@@ -107,7 +100,6 @@ function dayNight:start()
   toDawn()
   dayNight.dawn.a = dayNight.dawn.max_a
   dayNight.state = "dawn"
-
 end
 
 function dayNight:draw()

@@ -17,12 +17,9 @@ function love.load()
     death_modal = Modal:new("centered", 200, 150, {top=10, bottom=10, left=10, right=10})
     death_modal:setImageBackground(love.graphics.newImage("Source/Assets/death_modal_background.png"))
     death_modal:displayText("You are dead")
-<<<<<<< HEAD
 
     pierre = physical_decoration:new(10,3, sprites.pierre, 50, 50)
 
-=======
->>>>>>> 3853727c5aac8820db2d1839730f3adfa12b594f
 end
 
 function love.update(dt)
@@ -74,10 +71,7 @@ function love.draw()
     else
       oui = "false"
     end
-    love.graphics.print(dayNight.dawn.a, 0, 40)
-    love.graphics.print(dayNight.afternoon.a, 0, 50)
-    love.graphics.print(dayNight.sunset.a, 50, 40)
-    love.graphics.print(dayNight.night.a, 50, 50)
+    love.graphics.print(score, 0, 40)
     -- end debug
 
     if player.isAlive == false then
@@ -91,7 +85,7 @@ function love.keypressed(key)
     end
     if key == "space" then
         local px, py = frontInteraction(60)
-        local colliders = world:queryCircleArea(px, py, 20, {"physical_decoration"})
+        local colliders = world:queryCircleArea(px, py, 40, {"button"})
         if #colliders > 0 then
           score = score + #colliders
         end
