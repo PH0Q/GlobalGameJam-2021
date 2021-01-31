@@ -7,5 +7,6 @@ function createCollisionClasses()
     world:addCollisionClass('physical_decoration', {ignores = {'Ignore'}})
     world:addCollisionClass('item', {ignores = {'Ignore', 'Player'}})
     world:addCollisionClass('readable', {ignores = {'Ignore'}})
-    
+    world:addCollisionClass('button', {ingores = {'Ignore'}})
+
 end
