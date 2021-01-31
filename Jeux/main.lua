@@ -1,16 +1,6 @@
 function love.load()
     require("source/startup/gameStart")
-    decorators = {}
     gameStart()
-    --val = setDecorators()
-    map = {}
-    map.top = -1250
-    map.bottom =  1750
-    map.left = -1250
-    map.right = 2950
-    decorators = setDecorators(map, world)
-    --pierre = physical_decoration:new(20, 30, sprites.pierre, 50, 50)
-    score = 0
 
     dayNight:start()
 
@@ -18,7 +8,7 @@ function love.load()
     death_modal:setImageBackground(love.graphics.newImage("Source/Assets/death_modal_background.png"))
     death_modal:displayText("You are dead")
 
-    pierre = physical_decoration:new(10,3, sprites.pierre, 50, 50)
+
 
 end
 
@@ -37,16 +27,19 @@ function love.draw()
         love.graphics.setColor(1, 1, 1, 1)
         love.graphics.setBackgroundColor(0.19, 0.35, 0.88, 1)
         love.graphics.draw(sprites.background, -2500/2, -2500/2)
-        for i, v in ipairs(decorators.pierres) do
-          decorators.pierres[i]:draw()
+
+        for i, v in ipairs(terrain.groundDecorators) do
+            terrain.groundDecorators[i]:draw()
         end
-        --pierre:draw()
+
         player:draw()
+        for i, v in ipairs(terrain.decorators) do
+            terrain.decorators[i]:draw()
+        end
         love.graphics.setLineWidth(5)
-        pierre:draw()
 
         --debug
-        world:draw()
+        --world:draw()
         --end debug
     camera:detach()
 
@@ -54,25 +47,6 @@ function love.draw()
     dayNight:draw()
 
     --draw UI
-
-
-
-    -- debug
-    love.graphics.setColor(0, 0, 0, 1)
-    love.graphics.rectangle("fill", 0, 0, 150, 70)
-    love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.print(camera.scale, 0, 0)
-    love.graphics.print(player.collider:getX(), 0, 10)
-    love.graphics.print(player.collider:getY(), 0, 20)
-    --love.graphics.print(val, 0, 30)
-    love.graphics.setColor(0, 0, 0, 1)
-    if player.isAlive then
-      oui = "true"
-    else
-      oui = "false"
-    end
-    love.graphics.print(score, 0, 40)
-    -- end debug
 
     if player.isAlive == false then
         death_modal:draw()

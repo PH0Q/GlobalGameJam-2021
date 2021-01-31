@@ -20,5 +20,5 @@ function physical_decoration:new(p_x, p_y, p_sprite, p_width, p_height)
 end
 
 function physical_decoration:draw()
-    love.graphics.draw(self.sprite, self.collider:getX(), self.collider:getY(), nil, 1, 1, self.width/2, self.height/2)
+    love.graphics.draw(self.sprite.img, self.collider:getX(), self.collider:getY(), nil, self.sprite.scale, self.sprite.scale, self.sprite.width, self.sprite.height)
 end
