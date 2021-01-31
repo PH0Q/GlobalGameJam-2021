@@ -50,6 +50,7 @@ sprites.cle = love.graphics.newImage("Source/Assets/clef.png")
 sprites.arbre_crystal = love.graphics.newImage("Source/Assets/crystal_tree.png")
 sprites.crystal = love.graphics.newImage("Source/Assets/Crystal.png")
 sprites.cascade = love.graphics.newImage("Source/Assets/cascade.png")
+sprites.texte = love.graphics.newImage("Source/Assets/texte.png")
 
 
 music = {}
