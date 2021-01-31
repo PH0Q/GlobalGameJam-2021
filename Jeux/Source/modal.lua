@@ -53,7 +53,7 @@ function Modal:displayText(text, font)
     love.graphics.setCanvas()
 end
 
-function Modal:drawModal()
+function Modal:draw()
     love.graphics.setColor(1, 1, 1, 1)
     if self.background ~= nil then
         love.graphics.draw(self.background, self.x, self.y, nil, 1, 1, 0)
