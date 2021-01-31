@@ -40,7 +40,46 @@ end
 
 function setDecorators(map, world)
     decorators = {}
-    decorators.pierres = randomizedGroupedSprites(10, 10, 200, map, {img = sprites.pierre, width = 50, height = 50}, world)
+    decorators.herbe_a = randomizedGroupedSprites(5, 1, 200, map, {img = sprites.herbe_a, width = 50, height = 50}, world)
+    decorators.herbe_b = randomizedGroupedSprites(5, 1, 200, map, {img = sprites.herbe_a, width = 50, height = 50}, world)
+    decorators.herbe_c = randomizedGroupedSprites(5, 1, 200, map, {img = sprites.herbe_a, width = 50, height = 50}, world)
+    decorators.herbe_d = randomizedGroupedSprites(5, 1, 200, map, {img = sprites.herbe_a, width = 50, height = 50}, world)
+    decorators.herbe_e = randomizedGroupedSprites(5, 1, 200, map, {img = sprites.herbe_a, width = 50, height = 50}, world)
+    decorators.trefle_a = randomizedGroupedSprites(5, 1, 200, map, {img = sprites.trefle_a, width = 50, height = 50}, world)
+    decorators.trefle_b = randomizedGroupedSprites(5, 1, 200, map, {img = sprites.trefle_a, width = 50, height = 50}, world)
+    decorators.trefle_c = randomizedGroupedSprites(1, 1, 200, map, {img = sprites.trefle_a, width = 50, height = 50}, world)
+    decorators.crabe = randomizedGroupedSprites(1, 1, 200, map, {img = sprites.crabe, width = 50, height = 50}, world)
+    decorators.phoque = randomizedGroupedSprites(1, 1, 200, map, {img = sprites.phoque, width = 50, height = 50}, world)
+    decorators.feu = randomizedGroupedSprites(1, 1, 200, map, {img = sprites.feu, width = 50, height = 50}, world)
+    decorators.fleur_a = randomizedGroupedSprites(3, 3, 200, map, {img = sprites.fleur_a, width = 50, height = 50}, world)
+    decorators.fleur_b = randomizedGroupedSprites(3, 3, 200, map, {img = sprites.fleur_b, width = 50, height = 50}, world)
+    decorators.fleur_c = randomizedGroupedSprites(3, 3, 200, map, {img = sprites.fleur_c, width = 50, height = 50}, world)
+    decorators.fleur_d = randomizedGroupedSprites(3, 3, 200, map, {img = sprites.fleur_d, width = 50, height = 50}, world)
+    decorators.fleur_e = randomizedGroupedSprites(3, 3, 200, map, {img = sprites.fleur_e, width = 50, height = 50}, world)
+    decorators.tete = randomizedGroupedSprites(1, 1, 200, map, {img = sprites.tete, width = 50, height = 50}, world)
+    decorators.arbre_crystal = randomizedGroupedSprites(1, 1, 200, map, {img = sprites.arbre_crystal, width = 50, height = 50}, world)
+    decorators.arbre_a = randomizedGroupedSprites(3, 4, 200, map, {img = sprites.arbre_a, width = 50, height = 50}, world)
+    decorators.arbre_b = randomizedGroupedSprites(3, 4, 200, map, {img = sprites.arbre_b, width = 50, height = 50}, world)
+    decorators.arbre_c = randomizedGroupedSprites(3, 4, 200, map, {img = sprites.arbre_c, width = 50, height = 50}, world)
+    decorators.arbre_d = randomizedGroupedSprites(3, 4, 200, map, {img = sprites.arbre_d, width = 50, height = 50}, world)
+    decorators.arbre_e = randomizedGroupedSprites(3, 4, 200, map, {img = sprites.arbre_e, width = 50, height = 50}, world)
+    decorators.arbre_f = randomizedGroupedSprites(3, 4, 200, map, {img = sprites.arbre_f, width = 50, height = 50}, world)
+    decorators.arbre_g = randomizedGroupedSprites(3, 4, 200, map, {img = sprites.arbre_g, width = 50, height = 50}, world)
+    decorators.outils = randomizedGroupedSprites(1, 1, 200, map, {img = sprites.outils, width = 50, height = 50}, world)
+    decorators.soins = randomizedGroupedSprites(1, 1, 200, map, {img = sprites.soins, width = 50, height = 50}, world)
+    decorators.cle = randomizedGroupedSprites(1, 1, 200, map, {img = sprites.cle, width = 50, height = 50}, world)
+    decorators.cascade = randomizedGroupedSprites(1, 1, 200, map, {img = sprites.cascade, width = 50, height = 50}, world)
+    decorators.monolithe = randomizedGroupedSprites(1, 1, 200, map, {img = sprites.monolithe, width = 50, height = 50}, world)
+    decorators.rocher_a = randomizedGroupedSprites(4, 1, 200, map, {img = sprites.rocher_a, width = 50, height = 50}, world)
+    decorators.rocher_b = randomizedGroupedSprites(4, 1, 200, map, {img = sprites.rocher_b, width = 50, height = 50}, world)
+    decorators.rocher_c = randomizedGroupedSprites(4, 1, 200, map, {img = sprites.rocher_c, width = 50, height = 50}, world)
+    decorators.buisson_a = randomizedGroupedSprites(5, 1, 200, map, {img = sprites.buisson_a, width = 50, height = 50}, world)
+    decorators.buisson_b = randomizedGroupedSprites(5, 1, 200, map, {img = sprites.buisson_b, width = 50, height = 50}, world)
+    decorators.buisson_c = randomizedGroupedSprites(5, 1, 200, map, {img = sprites.buisson_c, width = 50, height = 50}, world)
+    decorators.buisson_d = randomizedGroupedSprites(5, 1, 200, map, {img = sprites.buisson_d, width = 50, height = 50}, world)
+    
+
+    
     return decorators
 end
 
