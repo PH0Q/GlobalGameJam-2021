@@ -1,36 +1,41 @@
-function getRandomizedCoordinates(n, max_width, max_height, min_width, min_height)
-    local randomized_coordinates = {}
-    for i=1,n do
-        randomized_coordinates[i] = {}
-        randomized_coordinates[i].x = love.math.random(min_width, max_width)
-        randomized_coordinates[i].y = love.math.random(min_height, max_height)
-    end
-    return randomized_coordinates
-end
+function randomizeSprites(n, map, sprite, world)
+    local decorations = {}
+    local i = 1
+    while(i <= n) do
+        local new_x = love.math.random(map.left, map.right)
+        local new_y = love.math.random(map.top, map.bottom)
 
-
-function setRandomizedGroup(n, m, o)
-    local tiles_coordinates = {}
-    local tiles_grp = {}
-    local primaries = getRandomizedCoordinates(n, 3500, 2000, -1200, -1200)
-    for i=1, n do
-        tiles_grp[i] = {}
-        tiles_grp[i] = getRandomizedCoordinates(m, primaries[i].x + o, primaries[i].y + o, primaries[i].x - o, primaries[i].y - o)
-        for j=1, m do
-            tiles_coordinates[(i-1) * m + j] = tiles_grp[i][j]
+        local local_collider = world:queryRectangleArea(new_x, new_y, sprite.width, sprite.height)
+        if #local_collider == 0 then
+            decorations[i] = physical_decoration:new(new_x, new_y, sprite.img, sprite.width, sprite.height)
+            i = i + 1
+        else
+            --n = n - 1
         end
     end
-    return tiles_coordinates, m*n
+    return decorations, i-1
 end
 
-function setDecorators()
+function randomizedGroupedSprites(n, m, offset, map, sprite, world)
     local decorators = {}
-    decorators.pierres = {}
-    local decorators_coordinates = {}
-    decorators_coordinates.pierres, n = setRandomizedGroup(10, 20, 200)
-    for i=1, n do
-        decorators.pierres[i] = physical_decoration:new(decorators_coordinates.pierres[i].x, decorators_coordinates.pierres[i].y, sprites.pierre, 50, 50)
+    local primals = nil
+    local size = 0
+    primals, size = randomizeSprites(n, map, sprite, world)
+    local count = 1
+    for i=1,size do
+        local x = primals[i].x
+        local y = primals[i].y
+        temp = randomizeSprites(m, {left = x - offset, right = x + offset, top = y - offset, bottom = y + offset}, sprite, world)
+        decorators[count] = primals[i]
+        count = count + 1
+        for j=1, size do
+            decorators[count] = temp[j]
+            count = count + 1
+        end
     end
+    return decorators
+end
 
-    return decorators, decorators_coordinates
+function setDecorators(map, world)
+    return randomizedGroupedSprites(30, 10, 200, map, {img = sprites.pierre, width = 50, height = 50}, world)
 end

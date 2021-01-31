@@ -1,7 +1,14 @@
 function love.load()
     require("source/startup/gameStart")
+    decorators = {}
     gameStart()
-    decorators, decorators_coordinates = setDecorators()
+    --val = setDecorators()
+    map = {}
+    map.top = -1200
+    map.bottom =  2000
+    map.left = -1200
+    map.right = 3500
+    decorators.pierres = setDecorators(map, world)
     --pierre = physical_decoration:new(20, 30, sprites.pierre, 50, 50)
     score = 0
 end
@@ -20,6 +27,7 @@ end
 function love.draw()
     camera:attach()
         love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.setBackgroundColor(1, 0, 0, 1)
         love.graphics.draw(sprites.background, -2500/2, -2500/2)
         for i, v in ipairs(decorators.pierres) do
           decorators.pierres[i]:draw()
@@ -35,12 +43,12 @@ function love.draw()
 
     -- debug
     love.graphics.setColor(0, 0, 0, 1)
-    love.graphics.rectangle("fill", 0, 0, 150, 40)
+    love.graphics.rectangle("fill", 0, 0, 150, 70)
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.print(camera.scale, 0, 0)
     love.graphics.print(player.collider:getX(), 0, 10)
     love.graphics.print(player.collider:getY(), 0, 20)
-
+    --love.graphics.print(val, 0, 30)
     love.graphics.setColor(0, 0, 0, 1)
     love.graphics.print(score, 0, 40)
     --love.graphics.print(pierre.collider:getY(), 0, 50)
