@@ -12,8 +12,9 @@ terrain.groundDecorators = {}
 -- generate some decorators, item and monuments on the empty map
 function terrain:generate()
     terrain.decorators = setDecorators(terrain.nbDecorators)
-    terrain.groundDecorators = setGroundDecorators(terrain.nbGroundDecorators)
+    --terrain.groundDecorators = setGroundDecorators(terrain.nbGroundDecorators)
 end
+
 
 -- generate some ground decorators
 function setGroundDecorators(nbDecorators)
@@ -27,7 +28,7 @@ function setGroundDecorators(nbDecorators)
     return decorators
 end
 
--- chosse the kind of ground ecorator
+-- choose the kind of ground ecorator
 function chooseRandGroundDecorator()
   return sprites.groundDecorators[love.math.random(#sprites.groundDecorators)]
 end
@@ -38,19 +39,30 @@ function addGroundDecorator(x, y, sprite)
   return decorator
 end
 
+
+
+
 -- generate some decorators
 function setDecorators(nbDecorators)
     local decorators = {}
-    for i = 1, nbDecorators, 1 do
-      local sprite = chooseRandDecorator()
-      local x, y = randValideCoord(terrain.top, terrain.bottom, terrain.left, terrain.right, sprite.hitbox)
-      decorators[i] = addDecorator(x, y, sprite)
-    end
+    decorators = tableMerge(decorators, chunckDecorators(-100*2, 850*2, -750*2, 1000*2, 50))
+    decorators = tableMerge(decorators, chunckDecorators(-960*2, -150*2, 720*2, 1300*2, 20))
+
     table.sort(decorators, function(a,b) return a.y<b.y end)
     return decorators
 end
 
--- chosse the kind of decorator
+function chunckDecorators(top, bottom, left, right, nbDecorators)
+    local decorators = {}
+    for i = 1, nbDecorators, 1 do
+      local sprite = chooseRandDecorator()
+      local x, y = randValideCoord(top, bottom, left, right, sprite.hitbox)
+      decorators[i] = addDecorator(x, y, sprite)
+    end
+    return decorators
+end
+
+-- choose the kind of decorator
 function chooseRandDecorator()
   return sprites.decorators[love.math.random(#sprites.decorators)]
 end
@@ -60,6 +72,11 @@ function addDecorator(x, y, sprite)
   local decorator = physical_decoration:new(x, y,  sprite, sprite.hitbox.width, sprite.hitbox.height)
   return decorator
 end
+
+
+
+
+
 
 -- give valide coordonate on a square
 function randValideCoord(top, bottom, left, right, hitbox)
@@ -80,5 +97,3 @@ function randCoord(top, bottom, left, right)
     local x = love.math.random(left, right)
     return x, y
 end
-
-terrain:generate()

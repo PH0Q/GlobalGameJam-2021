@@ -17,7 +17,7 @@ end
 sprites.blob = love.graphics.newImage("Source/Assets/blob_2.png")
 sprites.player = love.graphics.newImage("Source/Assets/pilot.png")
 sprites.player_back = love.graphics.newImage("Source/Assets/pilot_2.png")
-sprites.background = love.graphics.newImage("Source/Assets/background.png")
+sprites.background = love.graphics.newImage("Source/Assets/background_chunck.png")
 sprites.death_modal_background = love.graphics.newImage("Source/Assets/death_modal_background.png")
 
 sprites.herbe_a = sprites:new("Source/Assets/herbe-a.png", 0.1, 80/2, 50/2, 40, 25 )
