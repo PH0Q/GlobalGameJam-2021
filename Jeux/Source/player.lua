@@ -1,28 +1,28 @@
 -- blob's properties
 player = {}
 player.timer = Timer.new()
-player.width = 50 -- width of the animation
-player.height = 47 -- height of the animation
+player.width = 245 -- width of the animation
+player.height = 447 -- height of the animation
 player.isMoving = false
 player.isAlive = true
 
 -- Physics properties
-player.collider = world:newCircleCollider(25, 0, 20)
+player.collider = world:newCircleCollider(0,0,player.width*0.08)
 player.collider:setCollisionClass("Player")
+player.collider:setType("dynamic")
+player.collider:setFixedRotation( true )
 
 player.grids = {}
+
+player.sx = 1
+
 -- offset
 local left = 0
 local top = 0
 local border = 0
 player.grids.walk = anim8.newGrid(player.width, player.height, sprites.player:getWidth(), sprites.player:getHeight(), left, top, border)
 
-player.animations = {}
-player.animations.move = anim8.newAnimation(player.grids.walk('1-2', 1), 0.300)
-player.animations.left = anim8.newAnimation(player.grids.walk('4-4', 1), 0.300)
-player.animations.right = anim8.newAnimation(player.grids.walk('2-2', 1), 0.300)
-player.animations.top = anim8.newAnimation(player.grids.walk('1-1', 1), 0.300)
-player.animations.bottom = anim8.newAnimation(player.grids.walk('3-3', 1), 0.300)
+player.sprite = sprites.player --sprites.player_back
 
 -- This value stores the player's current animation
 --player.anim = player.animations.top
@@ -30,9 +30,9 @@ player.animations.bottom = anim8.newAnimation(player.grids.walk('3-3', 1), 0.300
 function player:update(dt)
 
     -- Freeze the animation if the player isn't moving
-    if player.isMoving then
-        player.anim:update(dt)
-    end
+    --if player.isMoving then
+        --player.anim:update(dt)
+    --end
 
     local vectorX = 0
     local vectorY = 0
@@ -40,22 +40,22 @@ function player:update(dt)
     -- Keyboard direction checks for movement
     if love.keyboard.isDown("left") then
         vectorX = -1
-        player.anim = player.animations.left
+        --player.anim = player.animations.left
         player.dir = "left"
     end
     if love.keyboard.isDown("right") then
         vectorX = 1
-        player.anim = player.animations.right
+        --player.anim = player.animations.right
         player.dir = "right"
     end
     if love.keyboard.isDown("up") then
         vectorY = -1
-        player.anim = player.animations.top
+        --player.anim = player.animations.top
         player.dir = "up"
     end
     if love.keyboard.isDown("down") then
         vectorY = 1
-        player.anim = player.animations.bottom
+        --player.anim = player.animations.bottom
         player.dir = "down"
     end
 
@@ -64,8 +64,6 @@ function player:update(dt)
     -- Check if player is moving
     if vectorX == 0 and vectorY == 0 then
         player.isMoving = false
-        player.anim = player.animations.bottom
-        player.anim:gotoFrame(1) -- go to standing frame
     else
         player.isMoving =  true
     end
@@ -77,12 +75,19 @@ function player:draw()
     local px = player.collider:getX()
     local py = player.collider:getY()
 
-    -- sx represents the scale on the x axis for the player animation
-    local sx = 1
+
+    if player.dir == "right" then
+      player.sx = 1
+    elseif player.dir == "left" then
+      player.sx = -1
+    elseif player.dir == "up" then
+      player.sprite = sprites.player_back
+    elseif player.dir == "down" then
+      player.sprite = sprites.player
+    end
 
     -- Draw the player's walk animation
-    love.graphics.setColor(1, 1, 1, 1)
-    player.anim:draw(sprites.player, px, py, nil, sx, 1, player.width/2, player.height/1.3)
+    love.graphics.draw(player.sprite, px, py, nil, player.sx*0.2, 0.2, player.width/2, player.height/1.24)
 
 end
 
