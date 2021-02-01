@@ -8,6 +8,7 @@ function love.load()
     death_modal:setImageBackground(love.graphics.newImage("Source/Assets/death_modal_background.png"))
     death_modal:displayText("You are dead")
 
+     terrain:generate()
 
 
 end
@@ -26,20 +27,31 @@ function love.draw()
 
         love.graphics.setColor(1, 1, 1, 1)
         love.graphics.setBackgroundColor(0.19, 0.35, 0.88, 1)
-        love.graphics.draw(sprites.background, -2500/2, -2500/2)
+        love.graphics.draw(sprites.background, -4200, -3000, nil, 2, 2)
 
         for i, v in ipairs(terrain.groundDecorators) do
             terrain.groundDecorators[i]:draw()
         end
 
-        player:draw()
+        local isDraw = false
+        local yp = player.collider:getY()
         for i, v in ipairs(terrain.decorators) do
+            if not isDraw then
+              local yd = terrain.decorators[i].collider:getY()
+              if yp < yd then
+                isDraw = true
+                player:draw()
+              end
+            end
             terrain.decorators[i]:draw()
         end
-        love.graphics.setLineWidth(5)
+
+        if not isDraw then
+          player:draw()
+        end
 
         --debug
-        --world:draw()
+        world:draw()
         --end debug
     camera:detach()
 
